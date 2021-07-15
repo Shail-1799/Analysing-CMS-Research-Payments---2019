@@ -11,21 +11,7 @@ from dash.dependencies import Input, Output
 import dash_table 
 import dash_bootstrap_components as dbc
 
-df = pd.read_csv("OP_DTL_RSRCH_PGYR2019_P01222021.csv", low_memory=False)
-
-specs = [str(s).split("|")[-1] for s in df['Physician_Specialty']]
-df['Specialty'] = specs
-
-df.Date_of_Payment = pd.to_datetime(df.Date_of_Payment)
-df["Month_of_Payment"] = df.Date_of_Payment.dt.month
-
-df["Quarters"] = df.Date_of_Payment.dt.quarter
-df['Quarters'] = ['Q'+str(n) for n in df.Quarters]
-
-my_df = df[['Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Name',
-    'Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_State','Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Country','Product_Category_or_Therapeutic_Area_1','Indicate_Drug_or_Biological_or_Device_or_Medical_Supply_1','Physician_Primary_Type','Specialty', 'Recipient_State','Date_of_Payment','Month_of_Payment','Quarters','Dispute_Status_for_Publication', 'Total_Amount_of_Payment_USDollars']]
-
-my_df.columns = ['Manufacturer / GPO', 'State', 'Country', 'Category','Product Type', 'Primary Type', 'Physician Specialty', 'Recipient State','Date', 'Month','Quarter','Disputed', 'Total Amount (USD)']
+my_df = pd.read_csv("my_df.csv", low_memory=False)
 
 # Formatting Categories
 cats = [str(c).title() for c in my_df.Category]
