@@ -56,11 +56,11 @@ def update_cards(cat_slctd):
 
 # Updating the plots
 
-@app.callback([Output(component_id='States_Bar',component_property='figure'),
-    Output(component_id='Primary_Type',component_property='figure'),
-    Output(component_id='Product_Type',component_property='figure'),
-    Output(component_id='Spec_Bar',component_property='figure'),
-   Output(component_id='Category',component_property='figure'),],
+@app.callback([Output(component_id='States_Bar3',component_property='figure'),
+    Output(component_id='Primary_Type3',component_property='figure'),
+    Output(component_id='Product_Type3',component_property='figure'),
+    Output(component_id='Spec_Bar3',component_property='figure'),
+   Output(component_id='Category3',component_property='figure'),],
     
      [Input('slct_cat','value'),])
 #      Input('start_date','value'),
