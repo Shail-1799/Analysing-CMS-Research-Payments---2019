@@ -82,7 +82,7 @@ def update_graph(origin):
     
     if origin == 'Country':
         
-        cdf = df.groupby(['Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Country']).Total_Amount_of_Payment_USDollars.agg(['size','sum','mean'])
+        cdf = my_df.groupby(['Country'])['Total Amount (USD)'].agg(['size','sum','mean'])
         cdf.reset_index(inplace=True)
         cdf.columns = ['Country','No. of Payments', 'Total Amount', 'Avg. Amount']
         cdf = cdf[cdf.Country != 'United States']
@@ -92,7 +92,7 @@ def update_graph(origin):
                          size_max=80, title='Payments Originated from Outside of The United States')
     else:
         
-        usdf = df.groupby(['Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_State']).Total_Amount_of_Payment_USDollars.agg(['size','sum','mean'])
+        usdf = my_df.groupby(['State'])['Total Amount (USD)'].agg(['size','sum','mean'])
         usdf.reset_index(inplace=True)
         usdf.columns = ['State','No. of Payments', 'Total Amount', 'Avg. Amount']
 
