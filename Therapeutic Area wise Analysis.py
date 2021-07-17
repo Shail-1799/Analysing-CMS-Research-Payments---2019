@@ -75,7 +75,7 @@ def update_graph(cat_slctd):
     dff1 = my_df[(my_df.Category == cat_slctd) ].groupby('Manufacturer / GPO', as_index=False)['Total Amount (USD)'].sum().sort_values(by='Total Amount (USD)',ascending=False)[:5]
     #dff1 = dff1[(my_df.Date >= s_date) & (my_df.Date <= e_date)].groupby('Manufacturer / GPO', as_index=False)['Total Amount (USD)'].sum().sort_values(by='Total Amount (USD)',ascending=False)[:5]
 
-    dff2 = my_df[(my_df.Category == cat_slctd) & (my_df['Physician Specialty'] != 'nan')].sort_values(by='Total Amount (USD)', ascending=False)[:10]
+    dff2 = my_df[(my_df.Category == cat_slctd) & (my_df['Physician Specialty'] != 'nan')].groupby('Physician Specialty', as_index=False)['Total Amount (USD)'].sum().sort_values(by='Total Amount (USD)', ascending=False)[:10]
     
    
     dff3 = my_df[my_df.Category == cat_slctd]['Primary Type'].value_counts()
