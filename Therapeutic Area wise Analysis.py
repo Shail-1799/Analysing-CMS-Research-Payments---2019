@@ -21,10 +21,10 @@ app.layout = dbc.Container([
 # Updating the number cards 
 
 @app.callback(
-    [Output('content-payments','children'),
-    Output('content-amount','children'),
-    Output('content-companies','children'),
-    Output('content-disputes','children')],
+    [Output('content3-payments','children'),
+    Output('content3-amount','children'),
+    Output('content3-companies','children'),
+    Output('content3-disputes','children')],
     
     [Input('slct_cat','value')]
 )
@@ -116,4 +116,4 @@ def update_graph(cat_slctd):
 
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8002)
+    app.run_server(debug=True, port=8003)
