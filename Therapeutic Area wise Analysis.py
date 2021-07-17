@@ -1,7 +1,7 @@
 from Dash_variables import *
 
 
-## Running well with 1 filter: Product Category  on Port 8002 ## 
+## Running well with 1 filter: Product Category  on Port 8003 ## 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
