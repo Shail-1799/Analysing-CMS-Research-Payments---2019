@@ -1,6 +1,6 @@
 from Dash_variables import *
 
-## Running well with 1 filter: State  on Port 8003 ## 
+## Running well with 1 filter: State  on Port 8002 ## 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUX])
 
@@ -22,10 +22,10 @@ app.layout = dbc.Container([
 # Updating the number cards 
 
 @app.callback(
-    [Output('content-payments','children'),
-    Output('content-amount','children'),
-    Output('content-companies','children'),
-    Output('content-disputes','children')],
+    [Output('content2-payments','children'),
+    Output('content2-amount','children'),
+    Output('content2-companies','children'),
+    Output('content2-disputes','children')],
     
     [Input('slct_state','value')]
 )
@@ -120,4 +120,4 @@ def update_graph(state_slctd):
 
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8003)
+    app.run_server(debug=True, port=8002)
