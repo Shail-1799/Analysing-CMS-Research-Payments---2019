@@ -124,7 +124,7 @@ general_layout = html.Div([
             dbc.Card(
             dbc.CardBody(
                 [
-                    html.H4(className="title",id='title1-content'),
+                    html.H4(className="title",id='title-content'),
                     html.H1(
                         [
                             "CMS Research Payments - 2019: General Overview "            
@@ -211,6 +211,7 @@ general_layout = html.Div([
             dbc.CardBody(
                 [
                     html.H2(dispute,className="card-title",id='content-disputes',style={'color':'#0B88CB','font-weight': 'bold'}),
+                    #html.H2(className="card-title",id='content-disputes',style={'color':'#0B88CB','font-weight': 'bold'}),
                     html.H5(
                         [
                             "Disputed Amount (USD)"            
@@ -240,13 +241,26 @@ general_layout = html.Div([
             dcc.RadioItems(
                 id='yaxis_raditem',
                 options=[
-                         {'label': 'No. of Payments    ', 'value': 'No. of Payments'},
-                         {'label': 'Total Amount', 'value': 'Total Amount (USD)'},
+                         {'label': 'No. of Payments: All    ', 'value': 'No. of Payments'},
+                         {'label': 'Top 10 Payments: Overall ', 'value': '10N'},
+                         {'label': 'Total Amount: All', 'value': 'Total Amount (USD)'},
+                         {'label': 'Top 10 Amount: Overall ', 'value': '10A'},
                 ],
                 value='No. of Payments',
                 style={"width": "100%"}
                 
             ,inputStyle={"margin-right": "10px","margin-left": "20px"}),
+                    
+#             dcc.RadioItems(
+#                 id='yaxis_raditem2',
+#                 options=[
+#                          {'label': 'No. of Payments    ', 'value': 'No. of Payments'},
+#                          {'label': 'Total Amount', 'value': 'Total Amount (USD)'},
+#                 ],
+#                 value='No. of Payments',
+#                 style={"width": "100%"}
+                
+#             ,inputStyle={"margin-right": "10px","margin-left": "20px"}),
                     
 #                      
                    dcc.Graph(id='fig1', figure={}) 
@@ -325,12 +339,34 @@ general_layout = html.Div([
         
         
                    
+    ],className='mb-2'),
+    
+        ##########################################################################################################################
+    # ROW 7   
+    dbc.Row([
+                
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dash_table.DataTable(
+                        id='computed-table',
+                        columns=[{"name": i, "id": i} for i in d.columns],
+                        editable=True,
+                        data=d.to_dict('records'),
+                        style_cell={'textAlign': 'left'},
+            
+    ),
+                ])
+            ]),
+        ], width=12),
+        
+        
+                   
     ],className='mb-2')     
+
 
         
 ])
-
-
 
 
 
